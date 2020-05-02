@@ -28,30 +28,30 @@ class SwichExample extends Component {
    componentDidMount = () => {
       
 
-      setInterval(() => {
+      // setInterval(() => {
 
-           const params='longitude'.concat("=",this.state.longitude).concat("&latitude=",this.state.latitude)
-           const url='http://192.168.8.100/pillDispancer/getInfo.php'.concat("?",params);
-          console.log(url);
-           fetch(url, {
-        method: 'GET'
-           })
-              .then((response) => response.json())
-              .then((responseJson) => {
-                 console.log(responseJson);
-                 this.setState({
-                    items:[
-                        {  title: 'Slot 1', value: responseJson.distance, unit:'Km', code: '#1abc9c' }, { title: 'Slot 2',value: responseJson.temp, unit:'Celcius', code: '#2ecc71' },
-                        { title: 'Slot 3', value: responseJson.hum, unit:'%',code: '#3498db' },
+      //      const params='longitude'.concat("=",this.state.longitude).concat("&latitude=",this.state.latitude)
+      //      const url='http://192.168.8.100/pillDispancer/getInfo.php'.concat("?",params);
+      //     console.log(url);
+      //      fetch(url, {
+      //   method: 'GET'
+      //      })
+      //         .then((response) => response.json())
+      //         .then((responseJson) => {
+      //            console.log(responseJson);
+      //            this.setState({
+      //               items:[
+      //                   {  title: 'Slot 1', value: responseJson.distance, unit:'Km', code: '#1abc9c' }, { title: 'Slot 2',value: responseJson.temp, unit:'Celcius', code: '#2ecc71' },
+      //                   { title: 'Slot 3', value: responseJson.hum, unit:'%',code: '#3498db' },
                        
-                      ]
-                 })
-              })
-              .catch((error) => {
-                 console.error(error);
-              });
+      //                 ]
+      //            })
+      //         })
+      //         .catch((error) => {
+      //            console.error(error);
+      //         });
         
-           }, 5000);
+      //      }, 5000);
      
    }
    componentWillUnmount = () => {

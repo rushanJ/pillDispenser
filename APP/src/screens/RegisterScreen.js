@@ -13,6 +13,8 @@ import {
   nameValidator,
 } from '../core/utils';
 
+
+
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState({ value: '', error: '' });
   const [email, setEmail] = useState({ value: '', error: '' });
