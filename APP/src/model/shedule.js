@@ -31,7 +31,7 @@ class SwichExample extends Component {
       // setInterval(() => {
 
       //      const params='longitude'.concat("=",this.state.longitude).concat("&latitude=",this.state.latitude)
-      //      const url='http://192.168.8.100/pillDispancer/getInfo.php'.concat("?",params);
+      //      const url='http://critssl.com/pillDispancer/getInfo.php'.concat("?",params);
       //     console.log(url);
       //      fetch(url, {
       //   method: 'GET'

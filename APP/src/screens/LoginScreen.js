@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import {AsyncStorage, TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
@@ -8,22 +8,40 @@ import TextInput from '../components/TextInput';
 import BackButton from '../components/BackButton';
 import { theme } from '../core/theme';
 import { emailValidator, passwordValidator } from '../core/utils';
-
+const axios = require('axios');
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState({ value: '', error: '' });
-  const [password, setPassword] = useState({ value: '', error: '' });
+  const [email, setEmail] = useState({ value: 'rushanj@critssl.com', error: '' });
+  const [password, setPassword] = useState({ value: 'rushan', error: '' });
+  const [user, setUser] = useState({ value: '', error: '' });
+ 
 
   const _onLoginPressed = () => {
-    // const emailError = emailValidator(email.value);
-    // const passwordError = passwordValidator(password.value);
+    const emailError = emailValidator(email.value);
+    const passwordError = passwordValidator(password.value);
 
-    // if (emailError || passwordError) {
-    //   setEmail({ ...email, error: emailError });
-    //   setPassword({ ...password, error: passwordError });
-    //   return;
-    // }
+    if (emailError || passwordError) {
+      setEmail({ ...email, error: emailError });
+      setPassword({ ...password, error: passwordError });
+      return;
+    }
+    axios.post("http://critssl.com/pillDispancer/auth.php?email="+email.value+"&pass="+password.value)
+    .then(function (response) {
+      setUser({ value: response.data.user, error: '' });
+      console.log(response.data.user);
+      console.log(user.value);
+      AsyncStorage.setItem('user', response.data.user);
+      
+      if (response.data.success) navigation.navigate('Dashboard');
+      else alert("UserName Or Password Error");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+   
+    // AsyncStorage.setItem('name', JSON.stringify(name.value), () => {});
+     AsyncStorage.setItem('id', JSON.stringify(user.value), () => {});
 
-    navigation.navigate('Dashboard');
+    // navigation.navigate('Dashboard');
   };
 
   return (

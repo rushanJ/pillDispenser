@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "React Native Simple Login Template",
-    "slug": "react-native-simple-login-template",
+    "name": "Pill Dispencer",
+    "slug": "pill-dispencer",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -24,7 +24,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.pilldispencer.app",
+      "buildNumber": "1"
+    },
+    "android": {
+      "package": "com.pilldispencer.app",
+      "versionCode": 1
     },
     "description": "Simple login template created with React Native.",
     "githubUrl": "https://github.com/venits/react-native-login-template"
